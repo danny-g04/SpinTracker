@@ -99,3 +99,13 @@ if mode == "Upload Video":
 elif mode == "Live Webcam":
     st.subheader("Live Webcam Mode")
     st.write("Detect strokes in real time")
+    
+    if not st.session_state.get('webcam_running', False):
+        if st.button("Start Session"):
+            st.session_state['webcam_running'] = True
+            st.rerun()
+    else:
+        if st.button(" Stop Session"):
+            st.session_state['webcam_running'] = False
+            st.rerun()
+        st.write("Session running... press Stop to end")
